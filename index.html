@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html class="dark" lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scientific Calculator</title>
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    
+
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -40,101 +44,143 @@
             },
         }
     </script>
-    
+
     <style>
         body {
             min-height: max(884px, 100dvh);
         }
-        
+
         .btn-scale {
             transition: transform 150ms ease;
         }
-        
+
         .btn-scale:active {
             transform: scale(0.95);
         }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display flex flex-col h-screen overflow-hidden selection:bg-primary selection:text-white">
-    
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display flex flex-col h-screen overflow-hidden selection:bg-primary selection:text-white">
+
     <!-- Top App Bar -->
     <header class="flex items-center justify-between p-4 shrink-0">
-        <button id="menuBtn" class="flex size-10 items-center justify-center rounded-full text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-[#192233] transition-colors">
+        <button id="menuBtn"
+            class="flex size-10 items-center justify-center rounded-full text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-[#192233] transition-colors">
             <span class="material-symbols-outlined">menu</span>
         </button>
         <h1 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Scientific</h1>
-        <button id="historyBtn" class="flex size-10 items-center justify-center rounded-full text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-[#192233] transition-colors">
+        <button id="historyBtn"
+            class="flex size-10 items-center justify-center rounded-full text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-[#192233] transition-colors">
             <span class="material-symbols-outlined">history</span>
         </button>
     </header>
-    
+
     <!-- Display Area -->
     <section class="flex flex-col justify-end px-6 pb-6 pt-2 shrink-0 border-b border-gray-200 dark:border-[#192233]">
         <div class="w-full text-right mb-2">
             <span id="expression" class="text-slate-500 dark:text-slate-400 text-2xl font-medium tracking-wide"></span>
         </div>
         <div class="w-full text-right">
-            <h2 id="result" class="text-slate-900 dark:text-white text-[3.5rem] font-bold leading-none tracking-tight break-all">0</h2>
+            <h2 id="result"
+                class="text-slate-900 dark:text-white text-[3.5rem] font-bold leading-none tracking-tight break-all">0
+            </h2>
         </div>
     </section>
-    
+
     <!-- Keypad Area -->
     <main class="flex-1 p-4 pb-8 overflow-y-auto">
         <div class="grid grid-cols-5 gap-3 h-full content-end">
             <!-- Scientific Row 1 -->
-            <button data-action="2nd" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-primary dark:text-[#6fa3ff] font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">2nd</button>
-            <button data-action="angleMode" id="angleModeBtn" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">deg</button>
-            <button data-function="sin" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">sin</button>
-            <button data-function="cos" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">cos</button>
-            <button data-function="tan" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">tan</button>
-            
+            <button data-action="2nd"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-primary dark:text-[#6fa3ff] font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">2nd</button>
+            <button data-action="angleMode" id="angleModeBtn"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">deg</button>
+            <button data-function="sin"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">sin</button>
+            <button data-function="cos"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">cos</button>
+            <button data-function="tan"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">tan</button>
+
             <!-- Scientific Row 2 -->
-            <button data-operator="^" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">x<sup>y</sup></button>
-            <button data-function="lg" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">lg</button>
-            <button data-function="ln" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">ln</button>
-            <button data-input="(" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">(</button>
-            <button data-input=")" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">)</button>
-            
+            <button data-operator="^"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">x<sup>y</sup></button>
+            <button data-function="lg"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">lg</button>
+            <button data-function="ln"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">ln</button>
+            <button data-input="("
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">(</button>
+            <button data-input=")"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">)</button>
+
             <!-- Scientific Row 3 -->
-            <button data-function="sqrt" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">√</button>
-            <button data-function="reciprocal" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">1/x</button>
-            <button data-constant="π" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">π</button>
-            <button data-constant="e" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">e</button>
-            <button data-operator="%" class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">%</button>
-            
+            <button data-function="sqrt"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">√</button>
+            <button data-function="reciprocal"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">1/x</button>
+            <button data-constant="π"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">π</button>
+            <button data-constant="e"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">e</button>
+            <button data-operator="%"
+                class="h-14 rounded-lg bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-[#232d42] btn-scale transition-all">%</button>
+
             <!-- Numpad Row 1 -->
-            <button data-number="7" class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">7</button>
-            <button data-number="8" class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">8</button>
-            <button data-number="9" class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">9</button>
-            <button data-action="backspace" class="h-16 rounded-lg bg-primary/10 dark:bg-[#2d3a52] border border-transparent text-primary dark:text-[#6fa3ff] font-bold text-xl hover:bg-primary/20 dark:hover:bg-[#394a69] btn-scale transition-all flex items-center justify-center">
+            <button data-number="7"
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">7</button>
+            <button data-number="8"
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">8</button>
+            <button data-number="9"
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">9</button>
+            <button data-action="backspace"
+                class="h-16 rounded-lg bg-primary/10 dark:bg-[#2d3a52] border border-transparent text-primary dark:text-[#6fa3ff] font-bold text-xl hover:bg-primary/20 dark:hover:bg-[#394a69] btn-scale transition-all flex items-center justify-center">
                 <span class="material-symbols-outlined">backspace</span>
             </button>
-            <button data-action="clear" class="h-16 rounded-lg bg-red-50 dark:bg-[#331e1e] border border-transparent text-red-500 dark:text-red-400 font-bold text-lg hover:bg-red-100 dark:hover:bg-[#442525] btn-scale transition-all">AC</button>
-            
+            <button data-action="clear"
+                class="h-16 rounded-lg bg-red-50 dark:bg-[#331e1e] border border-transparent text-red-500 dark:text-red-400 font-bold text-lg hover:bg-red-100 dark:hover:bg-[#442525] btn-scale transition-all">AC</button>
+
             <!-- Numpad Row 2 -->
-            <button data-number="4" class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">4</button>
-            <button data-number="5" class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">5</button>
-            <button data-number="6" class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">6</button>
-            <button data-operator="*" class="h-16 rounded-lg bg-primary/10 dark:bg-[#2d3a52] border border-transparent text-primary dark:text-[#6fa3ff] font-bold text-xl hover:bg-primary/20 dark:hover:bg-[#394a69] btn-scale transition-all">×</button>
-            <button data-operator="/" class="h-16 rounded-lg bg-primary/10 dark:bg-[#2d3a52] border border-transparent text-primary dark:text-[#6fa3ff] font-bold text-xl hover:bg-primary/20 dark:hover:bg-[#394a69] btn-scale transition-all">÷</button>
-            
+            <button data-number="4"
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">4</button>
+            <button data-number="5"
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">5</button>
+            <button data-number="6"
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">6</button>
+            <button data-operator="*"
+                class="h-16 rounded-lg bg-primary/10 dark:bg-[#2d3a52] border border-transparent text-primary dark:text-[#6fa3ff] font-bold text-xl hover:bg-primary/20 dark:hover:bg-[#394a69] btn-scale transition-all">×</button>
+            <button data-operator="/"
+                class="h-16 rounded-lg bg-primary/10 dark:bg-[#2d3a52] border border-transparent text-primary dark:text-[#6fa3ff] font-bold text-xl hover:bg-primary/20 dark:hover:bg-[#394a69] btn-scale transition-all">÷</button>
+
             <!-- Numpad Row 3 -->
-            <button data-number="1" class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">1</button>
-            <button data-number="2" class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">2</button>
-            <button data-number="3" class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">3</button>
-            <button data-operator="+" class="h-16 rounded-lg bg-primary/10 dark:bg-[#2d3a52] border border-transparent text-primary dark:text-[#6fa3ff] font-bold text-xl hover:bg-primary/20 dark:hover:bg-[#394a69] btn-scale transition-all">+</button>
-            <button data-operator="-" class="h-16 rounded-lg bg-primary/10 dark:bg-[#2d3a52] border border-transparent text-primary dark:text-[#6fa3ff] font-bold text-xl hover:bg-primary/20 dark:hover:bg-[#394a69] btn-scale transition-all">-</button>
-            
+            <button data-number="1"
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">1</button>
+            <button data-number="2"
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">2</button>
+            <button data-number="3"
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">3</button>
+            <button data-operator="+"
+                class="h-16 rounded-lg bg-primary/10 dark:bg-[#2d3a52] border border-transparent text-primary dark:text-[#6fa3ff] font-bold text-xl hover:bg-primary/20 dark:hover:bg-[#394a69] btn-scale transition-all">+</button>
+            <button data-operator="-"
+                class="h-16 rounded-lg bg-primary/10 dark:bg-[#2d3a52] border border-transparent text-primary dark:text-[#6fa3ff] font-bold text-xl hover:bg-primary/20 dark:hover:bg-[#394a69] btn-scale transition-all">-</button>
+
             <!-- Numpad Row 4 -->
-            <button data-number="0" class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">0</button>
-            <button data-input="." class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">.</button>
-            <button data-action="exp" class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-500 dark:text-slate-400 font-semibold text-base hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">EXP</button>
-            <button data-action="ans" class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-500 dark:text-slate-400 font-semibold text-base hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">ANS</button>
-            <button data-action="equals" class="h-16 rounded-lg bg-primary border border-transparent text-white font-bold text-2xl hover:bg-blue-600 shadow-[0_4px_12px_rgba(19,91,236,0.4)] btn-scale transition-all">=</button>
+            <button data-number="0"
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">0</button>
+            <button data-input="."
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-900 dark:text-white font-semibold text-xl hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">.</button>
+            <button data-action="exp"
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-500 dark:text-slate-400 font-semibold text-base hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">EXP</button>
+            <button data-action="ans"
+                class="h-16 rounded-lg bg-slate-100 dark:bg-[#1e293b] border border-transparent text-slate-500 dark:text-slate-400 font-semibold text-base hover:bg-slate-200 dark:hover:bg-[#2c3b55] btn-scale transition-all">ANS</button>
+            <button data-action="equals"
+                class="h-16 rounded-lg bg-primary border border-transparent text-white font-bold text-2xl hover:bg-blue-600 shadow-[0_4px_12px_rgba(19,91,236,0.4)] btn-scale transition-all">=</button>
         </div>
     </main>
-    
+
     <!-- JavaScript -->
-    <script type="module" src="js/app.js"></script>
+    <script src="js/app.js"></script>
 </body>
+
 </html>
